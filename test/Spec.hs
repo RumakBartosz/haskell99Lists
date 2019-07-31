@@ -20,7 +20,6 @@ main = hspec $
       it "works correctly with characters" $
         myLength ['a','b','z','k'] `shouldBe` (4 :: Int)
 
-
     describe "myReverse tests" $ do
       it "returns correct example value" $
         myReverse [123, 234, 345] `shouldMatchList` [345, 234, 123]
@@ -28,4 +27,12 @@ main = hspec $
         myReverse [1] `shouldMatchList` [1]
       it "works correctly with characters" $
         myReverse ['a','b','z','k'] `shouldMatchList` ['k','z','b','a']
+
+    describe "isPalindrome tests" $ do
+      it "returns correct example value" $
+        isPalindrome [123, 234, 345] `shouldBe` (False :: Bool)
+      it "returns correct value on single element" $
+        isPalindrome [1] `shouldBe` (True :: Bool)
+      it "works correctly with characters" $
+        isPalindrome ['a','b','b','a'] `shouldBe` (True :: Bool)
 

@@ -1,5 +1,5 @@
 module Lib
-    ( elementAt, myLength, myReverse
+    ( elementAt, myLength, myReverse, isPalindrome
     ) where
 
 elementAt :: [a] -> Int -> a
@@ -18,3 +18,10 @@ myReverse :: [a] -> [a]
 myReverse [] = []
 myReverse [x] = [x]
 myReverse (x:xs) = myReverse xs ++ [x]
+
+isPalindrome :: (Eq a) => [a] -> Bool
+isPalindrome [] = True
+isPalindrome [x] = True
+isPalindrome (x:xs)
+  | x == last xs = isPalindrome (init xs)
+  | otherwise = False
