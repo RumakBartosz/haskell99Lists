@@ -1,5 +1,5 @@
 module Lib
-    ( elementAt, myLength, myReverse, isPalindrome
+    ( elementAt, myLength, myReverse, isPalindrome, compress
     ) where
 
 elementAt :: [a] -> Int -> a
@@ -25,3 +25,12 @@ isPalindrome [x] = True
 isPalindrome (x:xs)
   | x == last xs = isPalindrome (init xs)
   | otherwise = False
+
+compress :: (Eq a) => [a] -> [a]
+compress [] = []
+compress [x] = [x]
+compress (x:xs)
+  | x == head xs = compress xs
+  | otherwise = x : compress xs
+
+

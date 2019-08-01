@@ -36,3 +36,11 @@ main = hspec $
       it "works correctly with characters" $
         isPalindrome ['a','b','b','a'] `shouldBe` (True :: Bool)
 
+
+    describe "compress tests" $ do
+      it "returns correct example value" $
+        compress [1, 1, 1, 2, 2, 3] `shouldMatchList` [1, 2, 3]
+      it "returns correct value on single element" $
+        compress [1] `shouldMatchList` [1]
+      it "works correctly with characters" $
+        compress ['a','b','b','a'] `shouldMatchList` ['a', 'b', 'a']
