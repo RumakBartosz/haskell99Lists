@@ -1,5 +1,5 @@
 module Lib
-    ( elementAt, myLength, myReverse, isPalindrome, compress
+    ( elementAt, myLength, myReverse, isPalindrome, compress, flatten, NestedList (Elem, List), pack
     ) where
 
 elementAt :: [a] -> Int -> a
@@ -33,4 +33,16 @@ compress (x:xs)
   | x == head xs = compress xs
   | otherwise = x : compress xs
 
+data NestedList a = Elem a | List [NestedList a]
 
+flatten :: NestedList a -> [a]
+flatten (List []) = []
+flatten (Elem x) = [x]
+flatten (List (x:xs)) = flatten x ++ flatten (List xs)
+
+pack :: String -> [String]
+pack [] = [[]]
+pack [x] = [[x]]
+pack (x:xs)
+  | [x] == head [xs] = x : pack xs
+  | otherwise = x : pack xs
