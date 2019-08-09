@@ -49,9 +49,10 @@ main = hspec $
         flatten (List [Elem 1, List [Elem 2, List [Elem 3, Elem 4], Elem 5]]) `shouldMatchList` [1,2,3,4,5]
       it "returns correct value on single element" $
         flatten (Elem 5) `shouldMatchList` [5]
-      describe "pack tests" $ do
-        it "returns correct example value" $
-          pack ['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e']
-            `shouldMatchList` ["aaaa","b","cc","aa","d","eeee"]
-        it "returns correct example on non change" $
-          pack ['a','b','a'] `shouldMatchList` ['a','b','a']
+        
+    describe "pack tests" $ do
+      it "returns correct example value" $
+        pack ['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e']
+          `shouldMatchList` ["aaaa","b","cc","aa","d","eeee"]
+      it "returns correct example on non change" $
+        pack ['a','b','a'] `shouldMatchList` ["a","b","a"]

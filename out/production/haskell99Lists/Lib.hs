@@ -2,6 +2,8 @@ module Lib
     ( elementAt, myLength, myReverse, isPalindrome, compress, flatten, NestedList (Elem, List), pack
     ) where
 
+import Data.List
+
 elementAt :: [a] -> Int -> a
 elementAt [] x = error "Can't find value in an empty list"
 elementAt [x] 1 = x
@@ -41,8 +43,6 @@ flatten (Elem x) = [x]
 flatten (List (x:xs)) = flatten x ++ flatten (List xs)
 
 pack :: String -> [String]
-pack [] = [[]]
+pack [] = []
 pack [x] = [[x]]
-pack (x:xs)
-  | [x] == head [xs] = x : pack [xs]
-  | otherwise = x : pack xs
+pack (x:xs) = (x : takeWhile (==x) xs) : pack (dropWhile (==x) xs)
